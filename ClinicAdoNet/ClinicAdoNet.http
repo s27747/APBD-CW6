@@ -1,6 +1,54 @@
-@ClinicAdoNet_HostAddress = http://localhost:5215
+@HostAddress = http://localhost:5000
 
-GET {{ClinicAdoNet_HostAddress}}/weatherforecast/
+GET {{HostAddress}}/api/appointments
 Accept: application/json
 
 ###
+
+GET {{HostAddress}}/api/appointments?status=Scheduled
+Accept: application/json
+
+###
+
+GET {{HostAddress}}/api/appointments?patientLastName=Kowalska
+Accept: application/json
+
+###
+
+GET {{HostAddress}}/api/appointments?idDoctor=1
+Accept: application/json
+
+###
+
+GET {{HostAddress}}/api/appointments/1
+Accept: application/json
+
+###
+
+POST {{HostAddress}}/api/appointments
+Content-Type: application/json
+
+{
+  "idPatient": 1,
+  "idDoctor": 2,
+  "appointmentDate": "2026-06-20T10:30:00",
+  "reason": "Control visit"
+}
+
+###
+
+PUT {{HostAddress}}/api/appointments/1
+Content-Type: application/json
+
+{
+  "idPatient": 1,
+  "idDoctor": 1,
+  "appointmentDate": "2026-06-22T12:00:00",
+  "status": "Scheduled",
+  "reason": "Rescheduled cardiology consultation",
+  "internalNotes": "Patient asked for a later hour."
+}
+
+###
+
+DELETE {{HostAddress}}/api/appointments/2
